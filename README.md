@@ -172,8 +172,6 @@ PSINT demonstrates core OSINT concepts taught in:
 - CompTIA Security+
 - University cybersecurity courses
 
-**Similar legitimate tools**: Sherlock, Maltego, theHarvester, Recon-ng, SpiderFoot
-
 ---
 
 ## 🤝 Contributing
