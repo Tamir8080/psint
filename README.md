@@ -36,122 +36,144 @@ Using this tool against individuals or systems without explicit written permissi
 - Python 3.8+
 - pip
 
-### Linux / macOS
+---
+
+### 🐧 Kali Linux / Ubuntu / Debian
+
+```bash
+# Step 1 — Clone the repo
+git clone https://github.com/Tamir8080/psint.git
+cd psint
+
+# Step 2 — Install venv (Kali requires this)
+sudo apt update
+sudo apt install python3-venv -y
+
+# Step 3 — Create virtual environment
+python3 -m venv venv
+
+# Step 4 — Activate it
+source venv/bin/activate
+
+# Step 5 — Install dependencies
+pip install -r requirements.txt
+
+# Step 6 — Run the tool
+python3 osint.py --help
+```
+
+### 🍎 macOS
+
 ```bash
 git clone https://github.com/Tamir8080/psint.git
 cd psint
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
-chmod +x osint.py
+python3 osint.py --help
+```
+
+### 🪟 Windows (PowerShell)
+
+```powershell
+git clone https://github.com/Tamir8080/psint.git
+cd psint
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
 python osint.py --help
+```
+
+---
+
+## ⚡ Easy Install (One Script)
+
+### Kali / Linux / macOS
+```bash
+git clone https://github.com/Tamir8080/psint.git
+cd psint
+bash install.sh
 ```
 
 ### Windows
 ```cmd
 git clone https://github.com/Tamir8080/psint.git
 cd psint
-pip install -r requirements.txt
-osint.bat --help
+install.bat
 ```
 
 ---
 
-## 💻 Usage
+## 🔄 Every time you want to use it
 
-```
-python osint.py [OPTIONS]
+### Kali / Linux / macOS
+```bash
+cd psint
+source venv/bin/activate
+python3 osint.py --help
 ```
 
-### Basic Examples
+### Windows
+```cmd
+cd psint
+venv\Scripts\activate
+python osint.py --help
+```
+
+---
+
+## 💻 Usage Examples
 
 ```bash
-# Search a username across 40+ platforms
-python osint.py --username johndoe
+# Search username across 40+ platforms
+python3 osint.py --username johndoe
 
-# Build intelligence profile from name + filters
-python osint.py --name "John Doe" --country "UK" --city "London"
-
-# Full profile search with all filters
-python osint.py --username johndoe --name "John Doe" --sex male --country "US" --age 28
+# Build profile from name
+python3 osint.py --name "John Doe" --country "US" --city "New York"
 
 # Email intelligence
-python osint.py --email john@example.com
+python3 osint.py --email target@example.com
 
-# Phone intelligence
-python osint.py --phone +12025551234
+# Phone lookup
+python3 osint.py --phone +1234567890
 
 # Analyze image EXIF metadata
-python osint.py --image /path/to/photo.jpg
+python3 osint.py --image photo.jpg
 
-# Run all modules and save HTML report
-python osint.py --username johndoe --name "John Doe" --all --output report.html
-```
+# Run all modules
+python3 osint.py --username johndoe --name "John Doe" --all
 
-### All Options
-
-```
-Target Input:
-  --username USERNAME     Username to search across platforms
-  --name FULL_NAME        Full name (e.g. "John Doe")
-  --email EMAIL           Email address
-  --phone PHONE           Phone number (E.164 format: +1234567890)
-  --image IMAGE_PATH      Local image for EXIF analysis
-
-Profile Filters:
-  --sex {male,female,other}
-  --country COUNTRY       Country (e.g. "US", "France")
-  --city CITY             City
-  --age AGE               Age or range (e.g. "25" or "20-30")
-  --company COMPANY       Employer or company
-
-Module Selection:
-  --all, -a               Run all modules
-  --social                Social media search only
-  --profile               Profile build only
-  --img                   Image search only
-
-Output:
-  --output FILE           Save to file (.json, .txt, .html)
-  --verbose, -v           Show all platform results
-  --no-color              Disable ANSI colors (for piping)
-  --timeout SECONDS       Request timeout (default: 10)
+# Save report
+python3 osint.py --username johndoe --output report.html
 ```
 
 ---
 
-## 📊 Sample Output
+## 🛠️ Troubleshooting
 
-```
-[10:42:01] [*] Starting username search across social platforms...
-
-  [✓] GitHub               https://github.com/johndoe
-  [✓] Twitter/X            https://twitter.com/johndoe
-  [✓] Reddit               https://www.reddit.com/user/johndoe
-  [✓] LinkedIn             https://www.linkedin.com/in/johndoe
-  [✓] Instagram            https://www.instagram.com/johndoe/
-
-  Found on 5 / 40 platforms
-```
+| Error | Fix |
+|-------|-----|
+| `pip not found` | Run `sudo apt install python3-pip -y` |
+| `externally-managed-environment` | Use virtual environment — follow steps above |
+| `python3-venv not found` | Run `sudo apt install python3-venv -y` |
+| `No module named requests` | Run `pip install -r requirements.txt` inside venv |
+| `git not found` (Windows) | Download Git from https://git-scm.com |
+| `python not found` | Download Python from https://python.org |
+| `destination path already exists` | Skip clone — just `cd psint` and continue |
 
 ---
 
-## 🗂️ Project Structure
+## 🔁 If something breaks — full reset
 
-```
-psint/
-├── osint.py              # Main entry point (CLI)
-├── osint.bat             # Windows launcher
-├── requirements.txt
-├── README.md
-└── modules/
-    ├── banner.py         # ASCII banner
-    ├── username_search.py # Platform username checker (40+ sites)
-    ├── profile_builder.py # Name/email/phone intelligence
-    ├── image_search.py   # EXIF analysis & reverse search
-    ├── report.py         # JSON/HTML/TXT report generator
-    └── utils.py          # Colors, helpers
+```bash
+cd ~/psint
+rm -rf venv
+python3 -m venv venv
+source venv/bin/activate
+pip install -r requirements.txt
+python3 osint.py --help
 ```
 
----
 
 ## 🛡️ Ethical Use
 
