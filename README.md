@@ -38,7 +38,7 @@ Using this tool against individuals or systems without explicit written permissi
 
 ### Linux / macOS
 ```bash
-git clone https://github.com/yourusername/psint.git
+git clone https://github.com/Tamir8080/psint.git
 cd psint
 pip install -r requirements.txt
 chmod +x osint.py
@@ -47,7 +47,7 @@ python osint.py --help
 
 ### Windows
 ```cmd
-git clone https://github.com/yourusername/psint.git
+git clone https://github.com/Tamir8080/psint.git
 cd psint
 pip install -r requirements.txt
 osint.bat --help
@@ -189,4 +189,4 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ---
 
-*Built for cybersecurity education. Use responsibly.*
+Built for cybersecurity education. Use responsibly.
