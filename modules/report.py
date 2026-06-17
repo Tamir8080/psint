@@ -89,8 +89,9 @@ class ReportGenerator:
             self._save_txt(path)
 
     def _target_str(self) -> str:
-        parts = [v for v in [self.target.get("username"), self.target.get("name"),
-                              self.target.get("email"), self.target.get("phone")] if v]
+        # Minimize sensitive data exposure in report headers/metadata.
+        # Keep only non-sensitive identifiers for display.
+        parts = [v for v in [self.target.get("username"), self.target.get("name")] if v]
         return " | ".join(parts) if parts else "Unknown"
 
     def _save_json(self, path: str):
